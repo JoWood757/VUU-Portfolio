@@ -1,0 +1,60 @@
+Jonathan Woodhouse
+ # Lab Assignment #2 Database Design and Implementation 
+# if no module found, install using this command: !pip i
+ import networkx as nx 
+#if no module found, install using this command: !pip in
+ import matplotlib.pyplot as plt
+ # create graph to represent the social network of studen
+ G = nx.Graph()
+ # student list 
+students = ["Alice", "Bob", "Charlie", "David", "Eve", "
+ # add students as nodes to the graph
+ G.add_nodes_from(students)
+ print(students)
+ ['Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank',
+ # list of connections between students, represents a con
+ connection = [
+ ("Alice", "Bob"),
+ ("Alice", "Charlie"),
+ ("Bob","Charlie" ),
+ ("Charlie", "David"),
+ ("Charlie", "Eve"),
+ ("David","Eve"),
+ ("Eve", "Frank"),
+ ("Frank", "Grace"),
+ ("Grace","Eve")
+ ]
+ # add connections as edges to the graph 
+G.add_edges_from(connection)
+ print(connection)
+ https://colab.research.google.com/drive/1BR0mejGRlOM4L2h5BRn2_27gL9nMXmmR#scrollTo=uHrkQht4h_VO&uniqifier=3&printMode=true
+ 1/3
+4/12/24, 2:30 PM
+ Untitled2.ipynb - Colab
+ [('Alice', 'Bob'), ('Alice', 'Charlie'), ('Bob', 'Ch
+ # print basic information about the graph
+ print("Nodes of the graph:", G.nodes())
+ print("Edges of the graph:", G.edges())
+ print("Number of nodes:", G.number_of_nodes())
+ print("Number of edges:", G.number_of_edges())
+ Nodes of the graph: ['Alice', 'Bob', 'Charlie', 'Dav
+ Edges of the graph: [('Alice', 'Bob'), ('Alice', 'Ch
+ Number of nodes: 7
+ Number of edges: 9
+ # visualize network
+ nx.draw(G, with_labels=True, font_weight='bold', node_co
+ plt.title("Social Network Graph Model")
+ plt.show()
+ # cerntality means a network is directly connected to many
+ degree_centrality = nx.degree_centrality(G)
+ print("\nDegree Centrality:")
+ for student, centrality in degree_centrality.items():
+ print(f"{student}: {centrality: .2f}")
+ # serve as a key broker between many other nodes (betweene
+ betweenness_centrality = nx.betweenness_centrality(G)
+ print("\nBetweeness Centrality:")
+ for student, centrality in betweenness_centrality.items():
+ print(f"{student}: {centrality: .2f}")
+ Betweeness Centrality:
+ Alice:  0.00
+ Bob:  0.00
